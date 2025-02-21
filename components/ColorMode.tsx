@@ -1,7 +1,9 @@
 export function ColorMode() {
 	return (
 		<div className="flex items-center justify-center gap-4">
-			<button>
+			<button
+				type={'button'}
+				className={'bg-backdrop flex items-center justify-center rounded-full border border-black-700 shadow backdrop-blur-md transition-all active:scale-90 sm:border-none sm:bg-transparent sm:shadow-none sm:backdrop-blur-none'}>
 				<div className="flex items-center justify-center rounded-full p-3 sm:p-2">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"

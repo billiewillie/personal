@@ -1,64 +1,108 @@
 'use client'
 
+import { Accordion, AccordionItem } from '@szhsin/react-accordion'
+import { useEffect } from 'react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-import { useEffect } from 'react'
+import AccentTitle from '@/components/ui/AccentTitle'
+import Link from 'next/link'
 import Image from 'next/image'
 
-export default function Hero() {
+type Company = {
+	name: string
+	bgColor: 'bg-white' | 'bg-black'
+	link: string
+	image: string
+	description: string
+	dates: string
+}
+
+const companies: Company[] = [
+	{
+		name: 'Биолайн',
+		bgColor: 'bg-white',
+		link: 'https://bioline.ru/',
+		image: '/experience/bioline.svg',
+		dates: 'март 2023 - февраль 2025',
+		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+	},
+	{
+		name: 'Studia 54',
+		bgColor: 'bg-black',
+		link: 'https://studia-54.com',
+		image: '/experience/studia-54.svg',
+		dates: 'март 2022 - февраль 2023',
+		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+	}
+]
+
+export default function Experience() {
 	useEffect(() => {
 		AOS.init()
 	}, [])
 	return (
-		<section className="py-8">
-			<div className="container flex flex-col items-center overflow-x-hidden sm:flex-row gap-8 md:gap-16">
-				<div className="relative w-full sm:w-1/3">
-					<div className="overflow-hidden rounded-b-full">
-						<Image
-							src="/persone.jpg"
-							priority={true}
-							width={406}
-							height={541}
-							alt="Вадим Белинович" />
-					</div>
-				</div>
-				<div className="w-full sm:w-2/3">
+		<section className="mb-24">
+			<div className="container flex gap-8">
+				<div className="top-40 h-fit md:sticky w-1/3">
 					<div
 						data-aos="fade"
 						data-aos-offset="0"
 						data-aos-duration="300"
 						data-aos-easing="ease"
-						data-aos-delay="0"
-						className="aos-init aos-animate">
-						<p className="mb-8 flex items-center gap-2 text-text-primary">
-						<span className="wave">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="24"
-								height="24"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								strokeWidth="2"
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								className="lucide lucide-hand text-highlight-primary">
-								<path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0" />
-								<path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2" />
-								<path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8" />
-								<path
-									d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15" />
-							</svg>
-						</span>
-							<span>Привет! Меня зовут Вадим</span>
-						</p>
+						data-aos-delay="0">
+						<AccentTitle title={'Опыт работы'} />
 					</div>
-					<h1 className="text-3xl font-bold">A <span className="text-accent">creative developer</span> & digital
-						designer</h1>
+					<p>Experience</p>
 					<p>
-						I collaborate with brands globally to design impactful, mission-focused websites that drive results and
-						achieve business goals.
+						I have worked with some of the most innovative industry leaders to help build their top-notch products.
 					</p>
+				</div>
+				<div
+					className="flex flex-col items-center w-2/3"
+					data-aos="fade"
+					data-aos-offset="0"
+					data-aos-duration="300"
+					data-aos-easing="ease"
+					data-aos-delay="0">
+					<Accordion
+						className="w-full"
+						transition
+						transitionTimeout={400}>
+						{
+							companies.map((company) => (
+								<AccordionItem
+									className={'pb-4 border-b border-black-700 mb-4 last:mb-0'}
+									key={company.name}
+									header={
+										<div className={'flex gap-x-4 items-start mb-2'}>
+											<div className={`logo flex rounded-full w-10 h-10 overflow-hidden ${company.bgColor}`}>
+												<Image
+													src={company.image}
+													alt={company.name}
+													width={40}
+													height={40} />
+											</div>
+											<div className="flex flex-col gap-y-1 items-start flex-auto">
+												<h3>Веб разработчик</h3>
+												<div className={'flex justify-between w-full'}>
+													<Link
+														className={'text-secondary underline-offset-4 hover:underline'}
+														href={company.link}
+														target={'_blank'}>
+														{company.name}
+													</Link>
+													<p>{company.dates}</p>
+												</div>
+											</div>
+										</div>
+									}>
+									<p className={'pl-14'}>
+										{company.description}
+									</p>
+								</AccordionItem>
+							))
+						}
+					</Accordion>
 				</div>
 			</div>
 		</section>

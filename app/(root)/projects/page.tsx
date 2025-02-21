@@ -1,5 +1,16 @@
-export default function Projects() {
+'use client'
+
+import Projects from '@/components/sections/Projects'
+import { useEffect, useState } from 'react'
+
+export default function ProjectsPage() {
+	const [revealClass, setRevealClass] = useState('')
+	useEffect(() => {
+		setRevealClass('revealedFx')
+	}, [revealClass])
 	return (
-		<h1>Projects page</h1>
+		<div className={`revealFx relative flex w-full flex-col justify-center hideRevealFx ${revealClass}`}>
+			<Projects />
+		</div>
 	)
 }

@@ -1,61 +1,47 @@
 'use client'
 
-import { Sparkle } from 'lucide-react'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import AOS from 'aos'
+import 'aos/dist/aos.css'
+import AccentTitle from '@/components/ui/AccentTitle'
+import revealSpans from '@/app/utils/revealSpans'
 
 export default function Experience() {
+	const text = 'Моя главная страсть — это создание решений, которые помогают людям решать их повседневные задачи. Будь то удобное мобильное приложение, сайт или сложная система автоматизации процессов. Я стремлюсь к тому, чтобы результат моей работы делал жизнь пользователей проще и удобнее.'
+
+	const textRef = useRef<HTMLParagraphElement>(null)
+
+	const spans = [...document.querySelectorAll('.reveal-letter')]
+
 	useEffect(() => {
 		AOS.init()
-	}, [])
+		window.addEventListener('scroll', () => {
+			revealSpans(spans)
+		})
+		revealSpans(spans)
+	})
 	return (
-		<section className="py-8">
-			<div className="container flex">
-				<div className="top-40 h-fit md:sticky w-1/3">
-					<span
-						data-aos="fade"
-						data-aos-offset="0"
-						data-aos-duration="300"
-						data-aos-easing="ease"
-						data-aos-delay="0"
-						className="aos-init aos-animate">
-						<div className="mb-4 flex w-fit items-center gap-2 text-highlight-primary">
-							<Sparkle size={18} />
-							<span
-								className="shimmer word-spacing font-clashDisplay text-sm uppercase leading-none text-highlight-primary">
-								Опыт работы
-							</span>
-						</div>
-					</span>
-					<p>Experience</p>
-					<p>
-						I have worked with some of the most innovative industry leaders to help build their top-notch products.
+		<section className="mb-24">
+			<div className="container flex flex-col items-center">
+				<AccentTitle title={'О себе'} />
+				<div
+					data-aos="fade"
+					data-aos-offset="0"
+					data-aos-delay="200"
+					data-aos-duration="300"
+					data-aos-easing="ease"
+					data-aos-once="true">
+					<p
+						ref={textRef}
+						className="text-center text-2xl sm:text-3xl md:text-[2rem] font-bold tracking-wide text-primary">
+						{
+							text.split('').map((letter, index) => (
+								<span
+									className={'reveal-letter opacity-10'}
+									key={index}>{letter}</span>
+							))
+						}
 					</p>
-				</div>
-				<div className="flex flex-col items-center w-2/3">
-					<p className="mb-10">много опыта</p>
-					<p className="mb-10">много опыта</p>
-					<p className="mb-10">много опыта</p>
-					<p className="mb-10">много опыта</p>
-					<p className="mb-10">много опыта</p>
-					<p className="mb-10">много опыта</p>
-					<p className="mb-10">много опыта</p>
-					<p className="mb-10">много опыта</p>
-					<p className="mb-10">много опыта</p>
-					<p className="mb-10">много опыта</p>
-					<p className="mb-10">много опыта</p>
-					<p className="mb-10">много опыта</p>
-					<p className="mb-10">много опыта</p>
-					<p className="mb-10">много опыта</p>
-					<p className="mb-10">много опыта</p>
-					<p className="mb-10">много опыта</p>
-					<p className="mb-10">много опыта</p>
-					<p className="mb-10">много опыта</p>
-					<p className="mb-10">много опыта</p>
-					<p className="mb-10">много опыта</p>
-					<p className="mb-10">много опыта</p>
-					<p className="mb-10">много опыта</p>
-
 				</div>
 			</div>
 		</section>
