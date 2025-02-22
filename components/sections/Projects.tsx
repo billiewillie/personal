@@ -1,6 +1,7 @@
 import AccentTitle from '@/components/ui/AccentTitle'
 import Link from 'next/link'
 import Image from 'next/image'
+import SplitText from '@/SplitText/SplitText'
 
 type Project = {
 	name: string
@@ -51,17 +52,23 @@ const projects: Project[] = [
 
 export default function Projects() {
 	return (
-		<section className="mb-24">
+		<section className="mb-32">
 			<div className="container">
-				<div className={'mb-8'}>
+				<div className={'flex flex-col items-start gap-4 mb-12'}>
 					<AccentTitle title={'Мои работы'} />
-					<h2>Projects</h2>
-					<p>
-						curated selection showcasing my expertise and the achieved results.
+					<SplitText
+						text="Проекты"
+						className="text-5xl font-bold"
+						delay={50}
+						animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
+						animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
+						threshold={0.1}
+						rootMargin="-50px" />
+					<p className={'text-secondary'}>
+						Здесь представлена подборка работ, демонстрирующая мой опыт и достигнутые результаты.
 					</p>
 				</div>
-				<div
-					className={'opacity-container grid grid-cols-1 grid-rows-[masonry] gap-y-10 py-md sm:grid-cols-2 sm:gap-x-16 sm:gap-y-0'}>
+				<div className={'mb-12 opacity-container grid grid-cols-1 grid-rows-[masonry] gap-y-10 py-md sm:grid-cols-2 sm:gap-x-16 sm:gap-y-0'}>
 					{
 						projects.map((project: Project) => (
 							<div
@@ -115,7 +122,11 @@ export default function Projects() {
 					data-aos-duration="300"
 					data-aos-easing="ease"
 					data-aos-delay="0">
-					<Link href="/projects">projects</Link>
+					<Link
+						href="/projects"
+						className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-semibold ring-offset-background transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-highlight-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary hover:opacity-90 text-black px-8 py-3">
+						Все работы
+					</Link>
 				</div>
 			</div>
 		</section>

@@ -10,7 +10,6 @@ export function Header() {
 					className="flex w-full items-center justify-between rounded-full transition-colors">
 					<Logo />
 					<Navigation />
-					<ColorMode />
 				</nav>
 			</div>
 		</header>

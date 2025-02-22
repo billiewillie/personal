@@ -5,20 +5,28 @@ import { useEffect } from 'react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import AccentTitle from '@/components/ui/AccentTitle'
+import SplitText from '@/SplitText/SplitText'
 
 export default function Experience() {
 	useEffect(() => {
 		AOS.init()
 	}, [])
 	return (
-		<section className="mb-24">
+		<section className="mb-32">
 			<div className="container">
 
-				<div>
-					<AccentTitle title={'Как создается дизайн'} />
-					<h2>Мой процесс работы</h2>
-					<p>
-						I have worked with some of the most innovative industry leaders to help build their top-notch products.
+				<div className="flex flex-col items-start gap-4">
+					<AccentTitle title={'Как создается сайт'} />
+					<SplitText
+						text="Мой процесс работы"
+						className="text-5xl font-bold"
+						delay={30}
+						animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
+						animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
+						threshold={0.1}
+						rootMargin="-50px" />
+					<p className={'text-secondary'}>
+						Мой процесс создания сайта можно разделить на несколько ступеней.
 					</p>
 				</div>
 				<div

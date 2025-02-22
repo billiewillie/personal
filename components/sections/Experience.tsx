@@ -7,33 +7,80 @@ import 'aos/dist/aos.css'
 import AccentTitle from '@/components/ui/AccentTitle'
 import Link from 'next/link'
 import Image from 'next/image'
+import SplitText from '@/SplitText/SplitText'
 
 type Company = {
 	name: string
 	bgColor: 'bg-white' | 'bg-black'
+	typeOfWork: string
 	link: string
 	image: string
-	description: string
+	description: string[]
 	dates: string
 }
 
 const companies: Company[] = [
 	{
 		name: 'Биолайн',
+		typeOfWork: 'Разработчик сайтов и дизайнер',
 		bgColor: 'bg-white',
 		link: 'https://bioline.ru/',
 		image: '/experience/bioline.svg',
 		dates: 'март 2023 - февраль 2025',
-		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+		description: [
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+		]
 	},
 	{
 		name: 'Studia 54',
 		bgColor: 'bg-black',
+		typeOfWork: 'Разработчик сайтов',
 		link: 'https://studia-54.com',
 		image: '/experience/studia-54.svg',
 		dates: 'март 2022 - февраль 2023',
-		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-	}
+		description: [
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+		]	},
+	{
+		name: 'Uno agency',
+		bgColor: 'bg-black',
+		typeOfWork: 'Разработчик сайтов',
+		link: 'https://uno-agency.ru/',
+		image: '/experience/uno.svg',
+		dates: 'июнь 2018 - февраль 2020',
+		description: [
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+		]	},
+	{
+		name: 'Adcombo',
+		bgColor: 'bg-white',
+		typeOfWork: 'Разработчик сайтов',
+		link: 'https://adcombo.com/',
+		image: '/experience/adcombo.svg',
+		dates: 'октябрь 2016 - апрель 2018',
+		description: [
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+		]	},
+	{
+		name: 'Jumeirah',
+		bgColor: 'bg-white',
+		typeOfWork: 'Разработчик сайтов',
+		link: 'https://www.jumeirah.com',
+		image: '/experience/jumeirah.svg',
+		dates: 'август 2012 - июль 2014',
+		description: [
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+		]
+	},
 ]
 
 export default function Experience() {
@@ -41,20 +88,27 @@ export default function Experience() {
 		AOS.init()
 	}, [])
 	return (
-		<section className="mb-24">
+		<section className="mb-32">
 			<div className="container flex gap-8">
-				<div className="top-40 h-fit md:sticky w-1/3">
+				<div className="top-40 h-fit md:sticky w-1/3 flex flex-col gap-4 items-start">
 					<div
 						data-aos="fade"
 						data-aos-offset="0"
 						data-aos-duration="300"
 						data-aos-easing="ease"
 						data-aos-delay="0">
-						<AccentTitle title={'Опыт работы'} />
+						<AccentTitle title={'карьера'} />
 					</div>
-					<p>Experience</p>
-					<p>
-						I have worked with some of the most innovative industry leaders to help build their top-notch products.
+					<SplitText
+						text="Опыт работы"
+						className="text-5xl font-bold"
+						delay={50}
+						animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
+						animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
+						threshold={0.1}
+						rootMargin="-50px" />
+					<p className='text-secondary'>
+						Я работал с некоторыми из самых известных лидеров отрасли, помогая им создавать первоклассные продукты.
 					</p>
 				</div>
 				<div
@@ -96,9 +150,17 @@ export default function Experience() {
 											</div>
 										</div>
 									}>
-									<p className={'pl-14'}>
-										{company.description}
-									</p>
+									<ul className={'pl-4 list-disc'}>
+										{
+											company.description.map((item: string, index) => (
+
+												<li key={index} className="text-secondary">
+													<p>{item}</p>
+												</li>
+
+											))
+										}
+									</ul>
 								</AccordionItem>
 							))
 						}

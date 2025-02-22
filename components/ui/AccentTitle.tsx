@@ -7,7 +7,7 @@ type AccentTitleProps = {
 export default function AccentTitle({ title }: AccentTitleProps) {
 	return (
 		<div className={'flex flex-col'}>
-			<div className="mb-4 flex w-fit items-center gap-2 text-accent">
+			<div className="flex w-fit items-center gap-2 text-accent">
 				<Sparkle size={18} />
 				<span
 					className="shimmer word-spacing font-clashDisplay text-sm uppercase leading-none text-highlight-primary">

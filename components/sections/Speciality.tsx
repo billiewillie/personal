@@ -7,6 +7,7 @@ import AccentTitle from '@/components/ui/AccentTitle'
 import Image from 'next/image'
 import { Accordion, AccordionItem } from '@szhsin/react-accordion'
 import { ChevronDown } from 'lucide-react'
+import SplitText from '@/SplitText/SplitText'
 
 type Speciality = {
 	id: number
@@ -51,12 +52,19 @@ export default function Experience() {
 		AOS.init()
 	}, [])
 	return (
-		<section className="mb-24">
+		<section className="mb-32">
 			<div className="container flex sm:gap-x-16">
-				<div className={'flex flex-col basis-1/2'}>
+				<div className={'flex flex-col basis-1/2 items-start gap-4'}>
 					<AccentTitle title={'Моя специализация'} />
-					<h2 className={'mb-8 text-5xl font-bold'}>Экспертные навыки</h2>
-					<div className="flex flex-col items-center">
+					<SplitText
+						text="Экспертные навыки"
+						className="text-5xl font-bold mb-8"
+						delay={50}
+						animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
+						animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
+						threshold={0.1}
+						rootMargin="-50px" />
+					<div className="flex flex-col items-center w-full">
 						<Accordion
 							className="w-full"
 							transition

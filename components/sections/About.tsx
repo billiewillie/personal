@@ -21,8 +21,8 @@ export default function Experience() {
 		revealSpans(spans)
 	})
 	return (
-		<section className="mb-24">
-			<div className="container flex flex-col items-center">
+		<section className="mb-32">
+			<div className="container flex flex-col items-center gap-4">
 				<AccentTitle title={'О себе'} />
 				<div
 					data-aos="fade"
