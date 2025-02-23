@@ -41,7 +41,7 @@ export default function Hero() {
 						</p>
 					</div>
 					<h1 className="text-[7.5vw] md:~text-3xl/6xl font-bold mb-6 leading-10">
-						Я <span className="text-accent">Fullstack&#8209;разработчик</span><br/>и Web&#8209;дизайнер
+						Я <span className="text-accent">Fullstack&#8209;разработчик</span><br/>и<span className={'w-3 inline-flex'}/> Web&#8209;дизайнер
 					</h1>
 					<p className={'text-balance text-base text-secondary'}>
 						Я сотрудничаю с компаниями по всему миру, создавая привлекательные и многофункциональные приложения, которые способствуют достижению результатов и целей бизнеса.
