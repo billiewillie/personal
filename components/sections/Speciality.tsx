@@ -1,17 +1,17 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState, FC } from 'react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import AccentTitle from '@/components/ui/AccentTitle'
 import Image from 'next/image'
 import { Accordion, AccordionItem } from '@szhsin/react-accordion'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, Monitor, Database, PenTool } from 'lucide-react'
 import SplitText from '@/SplitText/SplitText'
 
 type Speciality = {
 	id: number
-	icon: string
+	icon: FC
 	name: string
 	description: string
 	image: string
@@ -20,23 +20,23 @@ type Speciality = {
 const specialities: Speciality[] = [
 	{
 		id: 1,
-		icon: 'CodeXml',
+		icon: Monitor,
 		name: 'Frontend',
-		description: 'lorem10	lorem10	lorem10	lorem10	lorem10	lorem10	lorem10	',
-		image: '/specialities/development.webp'
+		description: 'Разработка адаптивных веб сайтов. Обеспечение удобного интерфейса, который адаптируется к любому устройству и размеру экрана, что делает взаимодействие с сайтом максимально комфортным для пользователей.',
+		image: '/specialities/frontend.webp'
 	},
 	{
 		id: 2,
-		icon: 'CodeXml',
+		icon: Database,
 		name: 'Backend',
-		description: 'lorem10	lorem10	lorem10	lorem10	lorem10	',
-		image: '/specialities/app1.jpg'
+		description: 'Создание серверной части веб-приложений, отвечающих за безопасную обработку данных, логику работы сайта и взаимодействие с базой данных.',
+		image: '/specialities/backend.webp'
 	},
 	{
 		id: 3,
-		icon: 'CodeXml',
+		icon: PenTool,
 		name: 'Web Design',
-		description: 'lorem10	lorem10	lorem10	lorem10	lorem10	',
+		description: 'Создание инновационных пользовательских интерфейсов, определяющих взаимодействие аудитории с продуктом.',
 		image: '/specialities/design.webp'
 	}
 ]
@@ -51,6 +51,7 @@ export default function Experience() {
 	useEffect(() => {
 		AOS.init()
 	}, [])
+
 	return (
 		<section className="mb-32">
 			<div className="container flex sm:gap-x-16">
@@ -73,7 +74,8 @@ export default function Experience() {
 								specialities.map((speciality: Speciality) => (
 									<AccordionItem
 										onClick={() => handleTabClick(speciality.id)}
-										className={'flex flex-col mb-4 p-4 rounded-2xl border border-black-700 bg-black-800 last:mb-0'}
+										className={'flex flex-col mb-4 rounded-2xl border border-black-700 bg-black-800 last:mb-0'}
+										itemKey={`Item-${speciality.id}`}
 										key={speciality.name}
 										header={
 											<div
@@ -82,17 +84,20 @@ export default function Experience() {
 												data-aos-duration="300"
 												data-aos-easing="ease"
 												data-aos-delay="0"
-												className={'flex gap-2'}>
-												<div>
-													O
-												</div>
+												className={'flex gap-4 p-4 items-center leading-none'}>
+												<speciality.icon
+													width={18}
+													height={18} />
 												<div className="flex flex-auto">
 													<h3>{speciality.name}</h3>
 												</div>
-												<ChevronDown width={24} height={24} />
+												<ChevronDown
+													width={18}
+													height={18}
+													className="arrow transition-transform" />
 											</div>
 										}>
-										<p className={'pt-4 text-secondary'}>
+										<p className={'text-secondary px-4 pb-4'}>
 											{speciality.description}
 										</p>
 									</AccordionItem>
@@ -101,7 +106,7 @@ export default function Experience() {
 						</Accordion>
 					</div>
 				</div>
-				<div className={'basis-1/2 group relative aspect-video h-full w-full overflow-hidden rounded-3xl bg-black-800'}>
+				<div className={'flex flex-col basis-1/2 group relative h-auto overflow-hidden rounded-3xl bg-black-800'}>
 					{specialities.map((speciality: Speciality) => (
 						<Image
 							className={`absolute top-0 left-0 h-full w-full transition duration-300 group-hover:scale-[1.015]`}

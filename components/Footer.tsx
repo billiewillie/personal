@@ -61,27 +61,21 @@ export default function Footer() {
 						© 2025 Вадим Белинович
 					</p>
 					<div className={'flex items-center opacity-container gap-8 text-secondary'}>
-						<Link aria-label="GitHub"
-									target="_blank"
-									rel="noopener noreferrer"
-									href="https://github.com">
+						<Link
+							aria-label="GitHub"
+							target="_blank"
+							rel="noopener noreferrer"
+							href="https://github.com/billiewillie">
 							<Github
 								size={20}
 								className={'opacity-container-child'} />
 						</Link>
-						<Link aria-label="Instagram"
-									target="_blank"
-									rel="noopener noreferrer"
-									href="https://www.instagram.com">
+						<Link
+							aria-label="Instagram"
+							target="_blank"
+							rel="noopener noreferrer"
+							href="https://www.instagram.com/vadim.belinovich">
 							<Instagram
-								size={20}
-								className={'opacity-container-child'} />
-						</Link>
-						<Link aria-label="Gmail"
-									target="_blank"
-									rel="noopener noreferrer"
-									href="mailto:vadimbelinovich@gmail.com">
-							<AtSign
 								size={20}
 								className={'opacity-container-child'} />
 						</Link>

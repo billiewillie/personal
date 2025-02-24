@@ -5,6 +5,7 @@ import 'aos/dist/aos.css'
 import { useEffect } from 'react'
 import Image from 'next/image'
 import { Hand } from 'lucide-react'
+import Link from 'next/link'
 
 export default function Hero() {
 	useEffect(() => {
@@ -16,7 +17,7 @@ export default function Hero() {
 				<div className="relative w-full sm:w-1/3">
 					<div className="overflow-hidden rounded-b-full">
 						<Image
-							src="/persone.jpg"
+							src="/me.jpg"
 							priority={true}
 							width={406}
 							height={541}
@@ -41,11 +42,19 @@ export default function Hero() {
 						</p>
 					</div>
 					<h1 className="text-[7.5vw] md:~text-3xl/6xl font-bold mb-6 leading-10">
-						Я <span className="text-accent">Fullstack&#8209;разработчик</span><br/>и<span className={'w-3 inline-flex'}/> Web&#8209;дизайнер
+						Я <span className="text-accent">Fullstack&#8209;разработчик</span><br />и<span
+						className={'w-3 inline-flex'} /> Web&#8209;дизайнер
 					</h1>
-					<p className={'text-balance text-base text-secondary'}>
-						Я сотрудничаю с компаниями по всему миру, создавая привлекательные и многофункциональные приложения, которые способствуют достижению результатов и целей бизнеса.
+					<p className={'text-balance text-base text-secondary mb-8'}>
+						Я сотрудничаю с компаниями по всему миру, создавая привлекательные и многофункциональные приложения, которые
+						способствуют достижению результатов и целей бизнеса.
 					</p>
+					<Link
+						href="/Белинович%20Вадим%20Игоревич.pdf"
+						target="_blank"
+						className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-semibold ring-offset-background transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-highlight-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary hover:opacity-90 text-black px-8 py-3">
+						Мое резюме
+					</Link>
 				</div>
 			</div>
 		</section>

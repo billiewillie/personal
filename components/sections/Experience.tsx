@@ -137,7 +137,7 @@ export default function Experience() {
 													height={40} />
 											</div>
 											<div className="flex flex-col gap-y-1 items-start flex-auto">
-												<h3>Веб разработчик</h3>
+												<h3 className='leading-none'>Веб разработчик</h3>
 												<div className={'flex justify-between w-full'}>
 													<Link
 														className={'text-secondary underline-offset-4 hover:underline'}
@@ -145,7 +145,7 @@ export default function Experience() {
 														target={'_blank'}>
 														{company.name}
 													</Link>
-													<p>{company.dates}</p>
+													<p className="text-secondary text-xs">{company.dates}</p>
 												</div>
 											</div>
 										</div>

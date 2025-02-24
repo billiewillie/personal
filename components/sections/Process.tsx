@@ -1,32 +1,73 @@
 'use client'
 
 import { BrainCircuit, PenLine, PencilRuler, CodeXml, ShieldCheck } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import AccentTitle from '@/components/ui/AccentTitle'
 import SplitText from '@/SplitText/SplitText'
 import { motion, useScroll } from 'motion/react'
 
-export default function Experience() {
+type ProcessItem = {
+	title: string
+	text: string
+	icon: FC
+}
+
+const processItems: ProcessItem[] = [
+	{
+		title: 'Стратегия',
+		text: 'Чтобы создать что‑то потрясающее, сначала нужно обсудить детали. Планирование очень важно.',
+		icon: BrainCircuit
+	},
+	{
+		title: 'Каркас проекта',
+		text: 'После проработки деталей веб‑сайта будет легко изложить идеи на бумаге.',
+		icon: PenLine
+	},
+	{
+		title: 'Дизайн',
+		text: 'Самое увлекательное - это вдохнуть жизнь в каркас и воплотить его в реальность.',
+		icon: PencilRuler
+	},
+	{
+		title: 'Разработка',
+		text: 'После принятия дизайна, его нужно оживить и напольнить функциональностью. Успех проекта зависит от качества разработки.',
+		icon: CodeXml
+	},
+	{
+		title: 'Проверка качества',
+		text: 'На качество веб‑сайта влияют такие факторы, как скорость его загрузки, SEO (поисковая оптимизация), оптимизация файлов и другие параметры.',
+		icon: ShieldCheck
+	}
+]
+
+export default function Process() {
 	const [progress, setProgress] = useState(0)
 	const ref = useRef(null)
 	const { scrollYProgress } = useScroll({
 		target: ref,
-		offset: ['120% end', 'start 40%']
+		offset: ['130% end', 'start 30%']
 	})
-
-	document.addEventListener('scroll', () => {
-		setProgress(scrollYProgress.get())
-	})
+	const [elShift, setElShift] = useState(0)
 
 	useEffect(() => {
+		setElShift(ref.current?.getBoundingClientRect().width - ref.current?.parentElement.getBoundingClientRect().width)
+		document.addEventListener('scroll', () => {
+			setProgress(scrollYProgress.get())
+		})
 		AOS.init()
-	})
+		return () => {
+			document.removeEventListener('scroll', () => {
+				setProgress(scrollYProgress.get())
+			})
+		}
+	}, [setElShift, scrollYProgress])
+
 	return (
 		<section className="mb-32">
 			<div className="container">
-				<div className="flex flex-col items-start gap-4 mb-8">
+				<div className="flex flex-col items-start gap-4 mb-8 min-h-[1px]">
 					<AccentTitle title={'Как создается сайт'} />
 					<SplitText
 						text="Мой процесс работы"
@@ -40,186 +81,50 @@ export default function Experience() {
 						Мой процесс создания сайта можно разделить на несколько ступеней.
 					</p>
 				</div>
-				<div className="h-[400px] relative">
-					<div className="relative h-[200px] overflow-hidden">
+				<div className="h-[280px] relative">
+					<div className="relative h-full overflow-hidden">
 						<motion.div
 							ref={ref}
 							style={{
 								position: 'absolute',
-								x: -progress * 300,
+								x: -progress * elShift
 							}}
 							className="left-0 top-0 flex gap-4">
 							{
-								[1, 2, 3, 4, 5].map((_, index) => (
+								processItems.map((item, index) => (
 									<div
 										className="w-full rounded-3xl border border-bg-700 p-6 min-w-[300px]"
 										key={index}>
-										<p>
-											To create something awesome, one must first talk about the details. Planning is essential.
-										</p>
+										<div
+											data-aos="fade"
+											data-aos-offset="0"
+											data-aos-duration="300"
+											data-aos-easing="ease"
+											data-aos-delay="0">
+											<div className="mb-4 w-fit rounded-full border border-bg-600 bg-bg-700 p-4 text-accent">
+												<item.icon size={18} />
+											</div>
+										</div>
+										<div
+											data-aos="fade"
+											data-aos-offset="0"
+											data-aos-duration="300"
+											data-aos-easing="ease"
+											data-aos-delay="200">
+											<h5 className="mb-2">0{index + 1}. {item.title}</h5>
+										</div>
+										<div
+											data-aos="fade"
+											data-aos-offset="0"
+											data-aos-duration="300"
+											data-aos-easing="ease"
+											data-aos-delay="400">
+											<p className='text-secondary'>{item.text}</p>
+										</div>
 									</div>
 								))
 							}
 						</motion.div>
-						{/*<motion.div*/}
-						{/*	id="carouselList"*/}
-						{/*	className="flex gap-4 items-stretch transition-transform duration-300">*/}
-						{/*	<div className="w-full rounded-3xl border border-bg-700 p-6 min-w-[300px]">*/}
-						{/*		<div*/}
-						{/*			data-aos="fade"*/}
-						{/*			data-aos-offset="0"*/}
-						{/*			data-aos-duration="300"*/}
-						{/*			data-aos-easing="ease"*/}
-						{/*			data-aos-delay="0">*/}
-						{/*			<div className="mb-4 w-fit rounded-full border border-bg-600 bg-bg-700 p-4 text-accent">*/}
-						{/*				<BrainCircuit size={18} />*/}
-						{/*			</div>*/}
-						{/*		</div>*/}
-						{/*		<div*/}
-						{/*			data-aos="fade"*/}
-						{/*			data-aos-offset="0"*/}
-						{/*			data-aos-duration="300"*/}
-						{/*			data-aos-easing="ease"*/}
-						{/*			data-aos-delay="200">*/}
-						{/*			<h5 className="mb-2">01. Стратегия</h5>*/}
-						{/*		</div>*/}
-						{/*		<div*/}
-						{/*			data-aos="fade"*/}
-						{/*			data-aos-offset="0"*/}
-						{/*			data-aos-duration="300"*/}
-						{/*			data-aos-easing="ease"*/}
-						{/*			data-aos-delay="400">*/}
-						{/*			<p>*/}
-						{/*				To create something awesome, one must first talk about the details. Planning is essential.*/}
-						{/*			</p>*/}
-						{/*		</div>*/}
-						{/*	</div>*/}
-						{/*	<div className="w-full rounded-3xl border border-bg-700 p-6 min-w-[300px]">*/}
-						{/*		<div*/}
-						{/*			data-aos="fade"*/}
-						{/*			data-aos-offset="0"*/}
-						{/*			data-aos-duration="300"*/}
-						{/*			data-aos-easing="ease"*/}
-						{/*			data-aos-delay="0">*/}
-						{/*			<div*/}
-						{/*				className="mb-4 w-fit rounded-full border border-bg-600 bg-bg-700 p-4 text-accent">*/}
-						{/*				<PenLine size={18} />*/}
-						{/*			</div>*/}
-						{/*		</div>*/}
-						{/*		<div*/}
-						{/*			data-aos="fade"*/}
-						{/*			data-aos-offset="0"*/}
-						{/*			data-aos-duration="300"*/}
-						{/*			data-aos-easing="ease"*/}
-						{/*			data-aos-delay="200">*/}
-						{/*			<h5 className="mb-2 font-satoshi">02. Wireframe</h5>*/}
-						{/*		</div>*/}
-						{/*		<div*/}
-						{/*			data-aos="fade"*/}
-						{/*			data-aos-offset="0"*/}
-						{/*			data-aos-duration="300"*/}
-						{/*			data-aos-easing="ease"*/}
-						{/*			data-aos-delay="400">*/}
-						{/*			<p>*/}
-						{/*				After hashing out the details of the website, easy to throw the ideas onto pen &amp; paper.*/}
-						{/*			</p>*/}
-						{/*		</div>*/}
-						{/*	</div>*/}
-						{/*	<div className="w-full rounded-3xl border border-bg-700 p-6 min-w-[300px]">*/}
-						{/*		<div*/}
-						{/*			data-aos="fade"*/}
-						{/*			data-aos-offset="0"*/}
-						{/*			data-aos-duration="300"*/}
-						{/*			data-aos-easing="ease"*/}
-						{/*			data-aos-delay="0">*/}
-						{/*			<div*/}
-						{/*				className="mb-4 w-fit rounded-full border border-bg-600 bg-bg-700 p-4 text-accent">*/}
-						{/*				<PencilRuler size={18} />*/}
-						{/*			</div>*/}
-						{/*		</div>*/}
-						{/*		<div*/}
-						{/*			data-aos="fade"*/}
-						{/*			data-aos-offset="0"*/}
-						{/*			data-aos-duration="300"*/}
-						{/*			data-aos-easing="ease"*/}
-						{/*			data-aos-delay="200">*/}
-						{/*			<h5 className="mb-2 font-satoshi">03. Дизайн</h5>*/}
-						{/*		</div>*/}
-						{/*		<div*/}
-						{/*			data-aos="fade"*/}
-						{/*			data-aos-offset="0"*/}
-						{/*			data-aos-duration="300"*/}
-						{/*			data-aos-easing="ease"*/}
-						{/*			data-aos-delay="400">*/}
-						{/*			<p>*/}
-						{/*				The most fun part of all - adding to the and bring it to life.*/}
-						{/*			</p>*/}
-						{/*		</div>*/}
-						{/*	</div>*/}
-						{/*	<div className="w-full rounded-3xl border border-bg-700 p-6 min-w-[300px]">*/}
-						{/*		<div*/}
-						{/*			data-aos="fade"*/}
-						{/*			data-aos-offset="0"*/}
-						{/*			data-aos-duration="300"*/}
-						{/*			data-aos-easing="ease"*/}
-						{/*			data-aos-delay="0">*/}
-						{/*			<div*/}
-						{/*				className="mb-4 w-fit rounded-full border border-bg-600 bg-bg-700 p-4 text-accent">*/}
-						{/*				<CodeXml size={18} />*/}
-						{/*			</div>*/}
-						{/*		</div>*/}
-						{/*		<div*/}
-						{/*			data-aos="fade"*/}
-						{/*			data-aos-offset="0"*/}
-						{/*			data-aos-duration="300"*/}
-						{/*			data-aos-easing="ease"*/}
-						{/*			data-aos-delay="200">*/}
-						{/*			<h5 className="mb-2 font-satoshi">*/}
-						{/*				04. Разработка*/}
-						{/*			</h5>*/}
-						{/*		</div>*/}
-						{/*		<div*/}
-						{/*			data-aos="fade"*/}
-						{/*			data-aos-offset="0"*/}
-						{/*			data-aos-duration="300"*/}
-						{/*			data-aos-easing="ease"*/}
-						{/*			data-aos-delay="400">*/}
-						{/*			<p>*/}
-						{/*				The design may be final but it needs to be functional and practical. Development is key.*/}
-						{/*			</p>*/}
-						{/*		</div>*/}
-						{/*	</div>*/}
-						{/*	<div className="w-full rounded-3xl border border-bg-700 p-6 min-w-[300px]">*/}
-						{/*		<div*/}
-						{/*			data-aos="fade"*/}
-						{/*			data-aos-offset="0"*/}
-						{/*			data-aos-duration="300"*/}
-						{/*			data-aos-easing="ease"*/}
-						{/*			data-aos-delay="0">*/}
-						{/*			<div className="mb-4 w-fit rounded-full border border-bg-600 bg-bg-700 p-4 text-accent">*/}
-						{/*				<ShieldCheck size={18} />*/}
-						{/*			</div>*/}
-						{/*		</div>*/}
-						{/*		<div*/}
-						{/*			data-aos="fade"*/}
-						{/*			data-aos-offset="0"*/}
-						{/*			data-aos-duration="300"*/}
-						{/*			data-aos-easing="ease"*/}
-						{/*			data-aos-delay="200">*/}
-						{/*			<h5 className="mb-2 font-satoshi">05. Проверка качества</h5>*/}
-						{/*		</div>*/}
-						{/*		<div*/}
-						{/*			data-aos="fade"*/}
-						{/*			data-aos-offset="0"*/}
-						{/*			data-aos-duration="300"*/}
-						{/*			data-aos-easing="ease"*/}
-						{/*			data-aos-delay="400">*/}
-						{/*			<p>*/}
-						{/*				Website load times, SEO, file optimization, etc., weigh in to the quality of the site.*/}
-						{/*			</p>*/}
-						{/*		</div>*/}
-						{/*	</div>*/}
-						{/*</motion.div>*/}
 					</div>
 				</div>
 			</div>
