@@ -21,7 +21,7 @@ export default function Footer() {
 										className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75"></span>
 									<span className="relative inline-flex h-full w-full rounded-full bg-accent"></span>
 								</div>
-								<p className="text-xs text-text-primary">
+								<p className="text-xs text-primary">
 									Открыт для сотрудничества
 								</p>
 							</div>
@@ -57,7 +57,7 @@ export default function Footer() {
 			</div>
 			<div>
 				<div className="container flex justify-between">
-					<p className="mb-16 text-center text-sm sm:mb-0 sm:text-left">
+					<p className="text-center text-sm text-secondary sm:mb-0 sm:text-left">
 						© 2025 Вадим Белинович
 					</p>
 					<div className={'flex items-center opacity-container gap-8 text-secondary'}>

@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+	import { usePathname } from 'next/navigation'
 
 type NavigationItem = {
 	link: string
@@ -25,7 +25,7 @@ const navigation: NavigationItem[] = [
 export function Navigation() {
 	const pathname = usePathname()
 	return (
-		<ul className="hidden gap-6 text-sm text-secondary sm:flex">
+		<ul className="hidden gap-6 text-sm text-secondary md:flex">
 			{
 				navigation.map((item) => {
 						const isActive = item.link === pathname

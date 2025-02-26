@@ -17,7 +17,7 @@ export default function Hero() {
 				<div className="relative w-full sm:w-1/3">
 					<div className="overflow-hidden rounded-b-full">
 						<Image
-							src="/me.jpg"
+							src="/me.webp"
 							priority={true}
 							width={406}
 							height={541}
@@ -32,7 +32,7 @@ export default function Hero() {
 						data-aos-duration="300"
 						data-aos-easing="ease"
 						data-aos-delay="0">
-						<p className="mb-6 flex items-center gap-2 text-text-primary">
+						<p className="mb-6 flex items-center gap-2 text-primary">
 							<span className="wave">
 								<Hand
 									size={24}
@@ -41,9 +41,9 @@ export default function Hero() {
 							<span>Здравствуйте! Меня зовут Вадим</span>
 						</p>
 					</div>
-					<h1 className="text-[7.5vw] md:~text-3xl/6xl font-bold mb-6 leading-10">
+					<h1 className="text-[6.5vw] md:~text-3xl/5xl font-bold mb-6 leading-[1.5]">
 						Я <span className="text-accent">Fullstack&#8209;разработчик</span><br />и<span
-						className={'w-3 inline-flex'} /> Web&#8209;дизайнер
+						className={'w-1 inline-flex'} /> Web&#8209;дизайнер
 					</h1>
 					<p className={'text-balance text-base text-secondary mb-8'}>
 						Я сотрудничаю с компаниями по всему миру, создавая привлекательные и многофункциональные приложения, которые

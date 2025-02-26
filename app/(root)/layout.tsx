@@ -1,7 +1,7 @@
 import { Header } from '@/components/Header'
 import { ReactNode } from 'react'
 import Footer from '@/components/Footer'
-import ButtonUp from '@/components/ui/ButtonUp'
+import MobileNav from '@/components/MobileNav'
 
 export default function RootLayout(
 	{ children }: Readonly<{ children: ReactNode }>
@@ -12,7 +12,7 @@ export default function RootLayout(
 			<main className="min-h-[100dvh]">
 				{children}
 			</main>
-			<ButtonUp />
+			<MobileNav />
 			<Footer />
 		</>
 	)

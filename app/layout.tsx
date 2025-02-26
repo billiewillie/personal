@@ -1,17 +1,12 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Geist, Geist_Mono, Montserrat } from 'next/font/google'
 import { ReactLenis, useLenis } from 'lenis/react'
 import React from 'react'
 import './globals.css'
 
-const geistSans = Geist({
-	variable: '--font-geist-sans',
-	subsets: ['latin']
-})
-
-const geistMono = Geist_Mono({
-	variable: '--font-geist-mono',
-	subsets: ['latin']
+const montserrat = Montserrat({
+	variable: '--montserrat',
+	subsets: ['latin', 'cyrillic']
 })
 
 export const metadata: Metadata = {
@@ -24,7 +19,7 @@ export default function RootLayout(
 ) {
 	return (
 		<html lang="ru">
-		<body className={`${geistSans.variable} ${geistMono.variable} antialiased relative flex flex-col`}>
+		<body className={`${montserrat.variable} antialiased relative flex flex-col`}>
 		<ReactLenis root>
 			{children}
 		</ReactLenis>

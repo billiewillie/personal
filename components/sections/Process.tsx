@@ -71,7 +71,7 @@ export default function Process() {
 					<AccentTitle title={'Как создается сайт'} />
 					<SplitText
 						text="Мой процесс работы"
-						className="text-5xl font-bold"
+						className="text-5xl font-bold !text-left"
 						delay={30}
 						animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
 						animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
@@ -81,7 +81,7 @@ export default function Process() {
 						Мой процесс создания сайта можно разделить на несколько ступеней.
 					</p>
 				</div>
-				<div className="h-[280px] relative">
+				<div className="h-[300px] relative">
 					<div className="relative h-full overflow-hidden">
 						<motion.div
 							ref={ref}

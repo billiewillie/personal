@@ -13,6 +13,9 @@ export default {
 	theme: {
 		screens,
 		fontSize,
+		fontFamily: {
+			sans: ['var(--font-base)', 'sans-serif'],
+		},
 		extend: {
 			colors: {
 				background: 'var(--background)',

@@ -95,7 +95,7 @@ export default function Skills() {
 				{
 					skills.map((skill: Skill) => (
 						<div
-							className="inline-flex w-fit min-w-fit items-center gap-4 mr-4 rounded-full border px-4 py-2 text-sm shadow transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-black-800 text-text-primary dark:bg-black-700"
+							className="inline-flex w-fit min-w-fit items-center gap-4 mr-4 rounded-full border px-4 py-2 text-sm shadow transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-black-800 text-primary dark:bg-black-700"
 							key={skill.name}>
 							<Image
 								width={18}

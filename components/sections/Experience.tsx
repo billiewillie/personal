@@ -89,8 +89,8 @@ export default function Experience() {
 	}, [])
 	return (
 		<section className="mb-32">
-			<div className="container flex gap-8">
-				<div className="top-40 h-fit md:sticky w-1/3 flex flex-col gap-4 items-start">
+			<div className="container flex flex-col gap-12 md:flex-row md:gap-8">
+				<div className="top-40 h-fit md:sticky md:w-1/3 flex flex-col gap-4 items-start">
 					<div
 						data-aos="fade"
 						data-aos-offset="0"
@@ -101,7 +101,7 @@ export default function Experience() {
 					</div>
 					<SplitText
 						text="Опыт работы"
-						className="text-5xl font-bold"
+						className="text-5xl font-bold !text-left"
 						delay={50}
 						animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
 						animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
@@ -112,7 +112,7 @@ export default function Experience() {
 					</p>
 				</div>
 				<div
-					className="flex flex-col items-center w-2/3"
+					className="flex flex-col items-center md:w-2/3"
 					data-aos="fade"
 					data-aos-offset="0"
 					data-aos-duration="300"

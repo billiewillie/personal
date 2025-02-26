@@ -106,8 +106,8 @@ export default function Projects() {
 											<h5>{project.name}</h5>
 											<div className="flex justify-between">
 												<div className="flex flex-wrap gap-2">
-													<p className="text-sm text-text-secondary">{project.typeOfWork}</p></div>
-												<p className="text-sm text-text-secondary">{project.year}</p></div>
+													<p className="text-sm text-secondary">{project.typeOfWork}</p></div>
+												<p className="text-sm text-secondary">{project.year}</p></div>
 										</div>
 									</div>
 								</Link>

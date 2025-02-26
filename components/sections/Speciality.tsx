@@ -36,7 +36,7 @@ const specialities: Speciality[] = [
 		id: 3,
 		icon: PenTool,
 		name: 'Web Design',
-		description: 'Создание инновационных пользовательских интерфейсов, определяющих взаимодействие аудитории с продуктом.',
+		description: 'Создание удобных пользовательских интерфейсов, определяющих взаимодействие аудитории с продуктом.',
 		image: '/specialities/design.webp'
 	}
 ]
@@ -54,12 +54,12 @@ export default function Experience() {
 
 	return (
 		<section className="mb-32">
-			<div className="container flex sm:gap-x-16">
-				<div className={'flex flex-col basis-1/2 items-start gap-4'}>
+			<div className="container flex flex-col gap-8 md:flex-row sm:gap-x-16">
+				<div className={'flex flex-col md:basis-1/2 items-start gap-4'}>
 					<AccentTitle title={'Моя специализация'} />
 					<SplitText
 						text="Экспертные навыки"
-						className="text-5xl font-bold mb-8"
+						className="text-5xl font-bold mb-8 !text-left"
 						delay={50}
 						animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
 						animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
@@ -106,7 +106,7 @@ export default function Experience() {
 						</Accordion>
 					</div>
 				</div>
-				<div className={'flex flex-col basis-1/2 group relative h-auto overflow-hidden rounded-3xl bg-black-800'}>
+				<div className={'flex flex-col md:basis-1/2 group relative h-[200px] md:h-auto overflow-hidden rounded-3xl bg-black-800'}>
 					{specialities.map((speciality: Speciality) => (
 						<Image
 							className={`absolute top-0 left-0 h-full w-full transition duration-300 group-hover:scale-[1.015]`}
